@@ -18,7 +18,7 @@ export const signup = async (req, res, next) => {
 
 export const signin = async (req, res, next) => {
   try {
-    const user = await UserModel.findOne({ email: req.body.email });
+    const user = await UserModel.findOne({ email: req.body.email }).maxTimeMS(20000);
     if (!user) return next("404 , User not found!");
 
     const isCorrect = await bcrypt.compare(req.body.password, user.password);
