@@ -1,0 +1,10 @@
+version: '3'
+services:
+  auth-nodejs-service:
+    build:
+      context: ./src
+      dockerfile: Dockerfile  # Relative path to Dockerfile within the context directory
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./auth_service/src:/app
